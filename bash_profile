@@ -30,21 +30,12 @@ if [ -f $BASH_COMPLETION_DIR/git ] && [ -f `which rbenv` ]; then
 elif [ -f $BASH_COMPLETION_DIR/git ]; then
   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\]  '
 elif [ `which rbenv` ]; then
-  export PS1="\[\033[01;33m\]$(__rbenv_ps1) \[\033[01;32m\]\\w\[\033[03;35m\] \$(parse_git_branch) \[\033[03;30m\]\$(__awsenv_ps1) \[\033[01;34m\]\$\[\033[00m\] "
+  export PS1="\[\033[01;33m\]$(__rbenv_ps1) \[\033[01;32m\]\\w\[\033[03;35m\] \$(parse_git_branch) \[\033[01;34m\]\$\[\033[00m\] "
 else
   export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
 fi
 
 # fast access to projects folder
-CDPATH=".:~:~/Sites"
-
-# load AWSenv file
-export AWSENV_PROFILES_DIR="$HOME/Sites/aws-profiles"
-. $HOME/Sites/dotfiles/awsenv.sh
-. $HOME/.awsrc
-awsenv-set dev
+CDPATH=".:~:~/Projects"
 
 source "$HOME/.git-completion.sh"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
